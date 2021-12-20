@@ -1,0 +1,59 @@
+﻿@model Paginacion
+@{
+    ViewData["Title"] = "Liquidaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<div class="row"> 
+    <div class="col-sm-6">
+<h1>Liquidaciones </h1>
+ </div>
+ <div  class="col-sm-6">
+     <a class="btn btn-sucess d-block "
+     asp-controller="LiquidacionTotal" asp-action="Create">Nuevo Formulario</a>
+
+ </div>
+ </div>
+  @using(Html.BeginForm(FormMethod.Get))
+{
+    <label>Periodo Prima</label>
+    <input type="text" name="periodo" id="periodo" />
+    <input type="submit" value="Filtrar" class="btn btn-success"/>
+
+}
+<table border="1" class="table bordered table-table-striped">
+     <tr style="background-color: palegreen">
+         <th>Id</th>
+         <th>Empleados</th>
+         <th>Periodo Cesantia</th>
+         <th>Periodo Prima</th>
+         <th>Perido de Vacaciones</th>
+         <th>Salario Base</th>
+         <th>Auxilio de transporte</th>
+         <th>Tipo Contrato</th>
+         <th>Action</th>
+
+
+         </tr>
+    @foreach (Liquidacion empleado in Model.entidades)
+   {
+   <tr>
+       <td>@empleado.Id</td>
+       <td>@empleado.NombreEmpleado</td>
+       <td>@empleado.periodoCesa</td>
+       <td>@empleado.periodoPri</td>
+       <td>@empleado.periodoVaca</td>
+       <td>@empleado.salarioBase</td>
+       <td>@empleado.auxilioTrans</td>
+       <td>@empleado.tipoContrato</td>
+       <td>
+           <a asp-controller="LiquidacionTotal" asp-action="Edit" asp-route-id="@empleado.Id">Editar</a>
+                      <a asp-controller="LiquidacionTotal" asp-action="Delete" asp-route-id="@empleado.Id">Borrar</a>
+
+       </td>
+   </tr>    
+   }
+</table>
+@{
+    Html.RenderPartial("_paginacion", Model);
+}

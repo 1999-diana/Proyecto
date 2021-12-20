@@ -1,0 +1,58 @@
+﻿@model Paginacion
+@{
+    ViewData["Title"] = "Rol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="row"> 
+    <div class="col-sm-6">
+<h1>Rol De Pagos De los Empleados</h1>
+ </div>
+ <div  class="col-sm-6">
+     <a class="btn btn-sucess d-block "
+     asp-controller="RoldePagos" asp-action="Create">Nuevo Rol De Pagos</a>
+
+ </div>
+ </div>
+  @using(Html.BeginForm(FormMethod.Get))
+{
+    <label>Nombre </label>
+    <input type="text" name="nombre" id="nombre" />
+    <input type="submit" value="Filtrar" class="btn btn-success"/>
+
+}
+
+<table border="1" class="table">
+     <tr style="background-color: pink">
+         <th>Id</th>
+         <th>Empleados</th>
+         <th>Sueldo Basico</th>
+         <th>Horas Extras</th>
+         <th>Comision</th>
+         <th>Aportes IESS</th>
+         <th>Prestamos</th>
+         <th>Total</th>
+         <th>Action</th>
+         </tr>
+    @foreach (RoldePago empleado in Model.entidades)
+   {
+   <tr>
+       <td>@empleado.Id</td>
+       <td>@empleado.NombreEmpleado</td>
+       <td>@empleado.sueldobasico</td>
+       <td>@empleado.horasextras</td>
+       <td>@empleado.comision</td>
+       <td>@empleado.aportes</td>
+       <td>@empleado.prestamos</td>
+       <td>@empleado.total</td>
+        <td>
+           <a asp-controller="RoldePagos" asp-action="Edit" asp-route-id="@empleado.Id">Editar</a>
+                      <a asp-controller="RoldePagos" asp-action="Delete" asp-route-id="@empleado.Id">Borrar</a>
+
+       </td>
+   </tr>    
+   }
+</table>
+@{
+    Html.RenderPartial("_paginacion", Model);
+}

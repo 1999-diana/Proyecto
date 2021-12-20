@@ -1,0 +1,35 @@
+﻿@model RoldePago
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar Rol De Pagos</h1>
+
+<form method="post" asp-action="Delete">
+    <input type="hidden" form="id" />
+    <label>Nombre Empleado</label>
+    <input asp-for="NombreEmpleado" />
+    <br />
+    <label>Sueldo Basico</label>
+    <input asp-for="sueldobasico" />
+    <br />
+    <label>Horas Extras </label>
+    <input asp-for="horasextras" />
+    <br />
+    <label>Comision</label>
+    <input asp-for="comision" />
+    <br />
+    <label>Aportees IESS</label>
+    <input asp-for="aportes" />
+    <br />
+   
+    <label>Prestamos</label>
+    <input asp-for="prestamos" />
+    <br />
+
+    <label>Total a Pagar</label>
+    <input asp-for="total" />
+    <br />
+    <input type="submit" value="Eliminar" />
+   </form>

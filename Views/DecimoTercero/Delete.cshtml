@@ -1,0 +1,27 @@
+﻿@model DecimoTercer
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar Formulario </h1>
+<form method="post" asp-action="Delete">
+    <input type="hidden" form="id" />
+    <label>Nombre Empleado</label>
+    <input asp-for="NombreEmpleado" />
+    <br />
+    <label>Fecha Inicio</label>
+    <input asp-for="fechaInicio" />
+    <br />
+    <label>Fecha Final</label>
+    <input asp-for="fechafin" />
+    <br />
+    <label>Meses Laborados </label>
+    <input asp-for="meses" />
+    <br />
+    <label>Total A Pagar </label>
+    <input asp-for="total" />
+    <br />
+    <input type="submit" value="Eliminar" />
+    </form>
+

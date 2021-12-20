@@ -1,0 +1,57 @@
+﻿@model Paginacion
+@{
+    ViewData["Title"] = "Decimos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+    }
+ <div class="row"> 
+    <div class="col-sm-6">
+<h1>Decimos A Pagar Al Empleado</h1>
+ </div>
+ <div  class="col-sm-6">
+     <a class="btn btn-sucess d-block "
+     asp-controller="DecimoTercero" asp-action="Create"> Nueva Informacion</a>
+
+ </div>
+ </div>
+ @using(Html.BeginForm(FormMethod.Get))
+{
+    <label>Nombre Empleado</label>
+    <input type="text" name="nombreEmpleado" id="nombreEmpleado" />
+    <input type="submit" value="Filtrar" class="btn btn-success"/>
+
+}
+
+
+<table border="1" class="table">
+    
+     <tr style="background-color: yellow">
+         <th>Id</th>
+         <th>Empleados</th>
+         <th>Fecha Inicio</th>
+         <th>Fecha Fin</th>
+         <th>Meses</th>
+         <th>Total</th>
+         <th>Action</th>
+         </tr>
+    @foreach (DecimoTercer empleado in Model.entidades)
+   {
+   <tr style="background-color: yellowgreen">
+       <td>@empleado.Id</td>
+       <td>@empleado.NombreEmpleado</td>
+       <td>@empleado.fechaInicio</td>
+       <td>@empleado.fechafin</td>
+       <td>@empleado.meses</td>
+       <td>@empleado.total</td>
+        <td>
+           <a asp-controller="DecimoTercero" asp-action="Edit" asp-route-id="@empleado.Id">Editar</a>
+                      <a asp-controller="DecimoTercero" asp-action="Delete" asp-route-id="@empleado.Id">Borrar</a>
+
+       </td>
+   </tr>    
+
+   }
+</table>
+@{
+    Html.RenderPartial("_paginacion", Model);
+}

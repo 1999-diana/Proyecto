@@ -1,0 +1,34 @@
+﻿@model Liquidacion
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Crear Formulario</h1>
+<form method="post" asp-action="Create">
+
+<label>Nombre Empleado</label>
+    <input asp-for="NombreEmpleado" />
+    <br />
+    <label>Periodo De Cesantia</label>
+    <input asp-for="periodoCesa" />
+    <br />
+    <label>Periodo Prima Ser.</label>
+    <input asp-for="periodoPri" />
+    <br />
+    <label>Perido De Vacaciones</label>
+    <input asp-for="periodoVaca" />
+    <br />
+    <label>Salario Base </label>
+    <input asp-for="salarioBase" />
+    <br />
+    <label>Auxilio De Transporte </label>
+    <input asp-for="auxilioTrans" />
+    <br />
+    <label>Tipo De Contrato </label>
+    <input asp-for="tipoContrato" />
+    <br />
+    <input type="submit" value="Crear" />
+   </form>
+
+

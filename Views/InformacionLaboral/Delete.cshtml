@@ -1,0 +1,39 @@
+﻿@model InformacionPersonal
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar Formulario</h1>
+<form method="post" asp-action="Delete">
+    <input type="hidden" form="id" />
+
+    <label>Nombre Empleado</label>
+    <input asp-for="NombreEmpleado" />
+    <br />
+    <label>Tipo de Contrato</label>
+    <input asp-for="tipocontrato" />
+    <br />
+    <label>Fecha Inicio</label>
+    <input asp-for="fechaInicio" />
+    <br />
+    <label>Fecha Finalizacion</label>
+    <input asp-for="fechafin" />
+    <br />
+    <label>Pago De Remuneracion </label>
+    <input asp-for="ultimaremuneracion" />
+    <br />
+    
+    <label>Provincia </label>
+    <input asp-for="tipoprovincia" />
+    <br />
+    
+    <label>Pago de Decimo Tercero </label>
+    <input asp-for="decimotercer" />
+    <br />
+    
+    <label>Dias De Vacaciones </label>
+    <input asp-for="diasvacaciones" />
+    <br />
+    <input type="submit" value="Eliminar" />
+   </form>

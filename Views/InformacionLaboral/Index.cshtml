@@ -1,0 +1,60 @@
+﻿@model Paginacion
+@{
+    ViewData["Title"] = "Informacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ 
+}
+<div class="row"> 
+    <div class="col-sm-6">
+<h1>Informacion Personal Del Empleado</h1>
+ </div>
+ <div  class="col-sm-6">
+     <a class="btn btn-sucess d-block "
+     asp-controller="InformacionLaboral" asp-action="Create"> Lista De Nuevo Decimo</a>
+
+ </div>
+ </div>
+  @using(Html.BeginForm(FormMethod.Get))
+{
+    <label>Tipo De Provincia</label>
+    <input type="text" name="provincia" id="provincia" />
+    <input type="submit" value="Filtrar" class="btn btn-success"/>
+
+}
+
+<table border="1" class="table">
+     <tr style="background-color: gainsboro">
+         <th>Id</th>
+         <th>Empleados</th>
+         <th> Tipo Contrato</th>
+         <th>Fecha Inicio</th>
+         <th>Fecha Fin</th>
+         <th>Ultima Remuneracion</th>
+         <th>Tipo Provincia</th>
+         <th>Decimo Tercero</th>
+         <th>Sin Vacaciones</th>
+         <th>Action</th>
+         </tr>
+    @foreach (InformacionPersonal empleado in Model.entidades)
+   {
+   <tr>
+       <td>@empleado.Id</td>
+       <td>@empleado.NombreEmpleado</td>
+       <td>@empleado.tipocontrato</td>
+       <td>@empleado.fechaInicio</td>
+       <td>@empleado.fechafin</td>
+       <td>@empleado.ultimaremuneracion</td>
+       <td>@empleado.tipoprovincia</td>
+       <td>@empleado.decimotercer</td>
+       <td>@empleado.diasvacaciones</td>
+       <td>
+           <a asp-controller="InformacionLaboral" asp-action="Edit" asp-route-id="@empleado.Id">Editar</a>
+                      <a asp-controller="InformacionLaboral" asp-action="Delete" asp-route-id="@empleado.Id">Borrar</a>
+
+       </td>
+   </tr>    
+   }
+</table>
+@{
+    Html.RenderPartial("_paginacion", Model);
+}

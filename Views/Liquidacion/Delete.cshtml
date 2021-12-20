@@ -1,0 +1,28 @@
+﻿@model Empleado
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar Empleados </h1>
+
+<form method="post" asp-action="Delete">
+    <input type="hidden" form="id" />
+
+    <label>Nombre Empleado</label>
+    <input asp-for="NombreEmpleado" />
+    <br />
+    <label>Sueldo</label>
+    <input asp-for="sueldo" />
+    <br />
+    <label>Liquidacion Total</label>
+    <input asp-for="LiquidacionTotal" />
+    <br />
+    <label>Decimo Tercer Sueldo</label>
+    <input asp-for="DicemoTercerSueldo" />
+    <br />
+    <label>Rol De Pagos </label>
+    <input asp-for="RoldePagos" />
+    <br />
+    <input type="submit" value="Borrar" />
+    </form>
